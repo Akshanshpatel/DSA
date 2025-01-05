@@ -1,0 +1,25 @@
+class Solution {
+    public List<Integer> addToArrayForm(int[] num, int k) {
+        List<Integer> ans=new ArrayList<>();
+        int p=num.length-1;
+        int carry=0;
+        while(p>=0 || k>0){
+            int arrNum=0;
+            if(p>=0){
+                arrNum=num[p];
+            }
+            int d=k%10;
+            int sum=d+arrNum+carry;
+            int digit=sum%10;
+            carry=sum/10;
+            ans.add(digit);
+            k=k/10;
+            p--;
+        }
+        if(carry>0){
+            ans.add(carry);
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
+}
